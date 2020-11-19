@@ -3,10 +3,22 @@ import "./App.css";
 import InventoryTavern from "./components/InventoryTavern";
 import InventoryMySelf from "./components/InventoryMySelf";
 import ingredientsList from "./components/ingredientsList";
+import Backgroundimg from "./background.svg";
 import styled from "styled-components";
 
 const IngredientTavern = styled.div``;
 const IngredientBackpack = styled.div``;
+
+const Apps = styled.div`
+  margin: 0;
+  padding: 0;
+  background-image: url(${Backgroundimg});
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  padding-bottom: 20em;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -49,40 +61,50 @@ class App extends React.Component {
     const { ingredient1, ingredient2, ingredient3 } = this.state;
     return (
       <div className="App">
-        <h1>Epic Recipe</h1>
+        <Apps>
+          <h1>Epic Recipe</h1>
 
-        <IngredientTavern>
-          <button type="button">
-            <InventoryTavern image={ingredient1.img} name={ingredient1.name} />
-          </button>
-          <button type="button">
-            <InventoryTavern image={ingredient2.img} name={ingredient2.name} />
-          </button>
-          <button type="button">
-            <InventoryTavern image={ingredient3.img} name={ingredient3.name} />
-          </button>
-        </IngredientTavern>
+          <IngredientTavern>
+            <button type="button">
+              <InventoryTavern
+                image={ingredient1.img}
+                name={ingredient1.name}
+              />
+            </button>
+            <button type="button">
+              <InventoryTavern
+                image={ingredient2.img}
+                name={ingredient2.name}
+              />
+            </button>
+            <button type="button">
+              <InventoryTavern
+                image={ingredient3.img}
+                name={ingredient3.name}
+              />
+            </button>
+          </IngredientTavern>
 
-        <button
-          onClick={() =>
-            this.setState({
-              ingredient1: this.newImage(),
-              ingredient2: this.newImage(),
-              ingredient3: this.newImage(),
-            })
-          }
-        >
-          change the draft
-        </button>
+          <button
+            onClick={() =>
+              this.setState({
+                ingredient1: this.newImage(),
+                ingredient2: this.newImage(),
+                ingredient3: this.newImage(),
+              })
+            }
+          >
+            change the draft
+          </button>
 
-        <IngredientBackpack>
-          <InventoryMySelf />
-          <InventoryMySelf />
-          <InventoryMySelf />
-        </IngredientBackpack>
+          <IngredientBackpack>
+            <InventoryMySelf />
+            <InventoryMySelf />
+            <InventoryMySelf />
+          </IngredientBackpack>
+        </Apps>
       </div>
     );
   }
 }
-
 export default App;
