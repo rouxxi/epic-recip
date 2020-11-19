@@ -1,12 +1,11 @@
 import React from "react";
-import "./App.css";
 
-function App() {
+function Algo() {
   return (
-    <div className="App">
+    <div className="algo">
       <h1>Epic Recipe</h1>
     </div>
   );
 }
 
-export default App;
+export default Algo;
