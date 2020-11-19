@@ -10,7 +10,6 @@ class InventoryTavern extends React.Component {
   }
   render() {
     const { image, name } = this.props;
-    console.log(image);
     return (
       <Inventory img={image}>
         <img src={image} alt={name} />
