@@ -9,9 +9,10 @@ class InventoryMySelf extends React.Component {
     this.state = {};
   }
   render() {
+    const { image, name } = this.props;
     return (
       <Inventory>
-        <img src={this.props.image} alt={this.props.name} />
+        <img src={image} alt={name} />
       </Inventory>
     );
   }
