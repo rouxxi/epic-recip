@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Backgroundimg from "./background.svg";
 
+
 const Apps = styled.div`
   margin: 0;
   padding: 0;
@@ -15,7 +16,9 @@ const Apps = styled.div`
 function App() {
   return (
     <div className="App">
-      <Apps></Apps>
+      <Apps>
+
+      </Apps>
     </div>
   );
 }
