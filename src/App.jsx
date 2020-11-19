@@ -3,7 +3,7 @@ import "./App.css";
 import InventoryTavern from "./components/InventoryTavern";
 import InventoryMySelf from "./components/InventoryMySelf";
 import ingredientsList from "./components/ingredientsList";
-import Backgroundimg from "./background.svg";
+import Backgroundimg from "./images/background.svg";
 import styled from "styled-components";
 import bannerImg from './images/Banner.svg';
 import tavernierImg from './images/tavernier.svg';
