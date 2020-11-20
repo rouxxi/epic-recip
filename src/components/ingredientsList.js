@@ -50,7 +50,7 @@ const ingredientsList = [{
     {
         id: 8,
         img: "./images/Fleur-1.png",
-        name: "Aile",
+        name: "Fleur-1",
         rating: 27,
         rarity: "uncommun",
     },
