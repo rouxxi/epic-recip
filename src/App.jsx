@@ -9,6 +9,7 @@ import Backgroundimg from "./images/background.svg";
 import styled from "styled-components";
 import bannerImg from "./images/Banner.svg";
 import tavernierImg from "./images/tavernier.svg";
+import Audio from './components/Audio'
 
 const IngredientTavern = styled.div``;
 const IngredientBackpack = styled.div``;
@@ -36,6 +37,11 @@ const Apps = styled.div`
 const Block = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+const Header = styled.div`
+  display: flex;
+
 `;
 
 const Banner = styled.div`
@@ -272,8 +278,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <Apps>
-          <Banner />
-          <Victory> Victoire ! </Victory>
+          <Header>
+            <Banner />
+            <Audio/>
+          </Header>
           <Block>
             <Instructions>
               <Title>Instructions</Title>
