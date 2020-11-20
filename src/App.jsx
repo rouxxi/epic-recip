@@ -415,6 +415,7 @@ class App extends React.Component {
                         ingredient1: this.newImage(),
                         ingredient2: this.newImage(),
                         ingredient3: this.newImage(),
+                        counterlife: this.state.counterlife -1,
                       })
                     }
                   ></button>
