@@ -35,7 +35,8 @@ const Apps = styled.div`
     margin-top: 5%;
   }
 
-  .player, .tavernier {
+  .player,
+  .tavernier {
     text-align: center;
     height: auto;
     width: 100%;
@@ -88,6 +89,10 @@ const Instructions = styled.div`
     text-align: center;
     line-height: 1.5;
     padding: 0 25px;
+  }
+
+  @media screen and (max-width: 500px) {
+    display: none;
   }
 `;
 
@@ -285,7 +290,7 @@ class App extends React.Component {
           <Banner />
           <Victory> Victoire ! </Victory>
           <Block>
-            <Instructions>
+            <Instructions className="instructions">
               <Title>Instructions</Title>
               <p>
                 Oyé Oyé voyageur ! Es-tu prêt à relever le défi ? Les règles
@@ -301,7 +306,6 @@ class App extends React.Component {
             <GameBoard>
               <TavernKeeper />
               <StuffTavernKeeper className="tavernier">
-                
                 <Title>Stuff tavern keeper</Title>
                 <IngredientTavern>
                   <div>
@@ -348,7 +352,6 @@ class App extends React.Component {
                         name={ingredient3.name}
                       />
                     </Button>
-                    
                   </div>
                   <button
                     className="ButtonChangeDraft"
