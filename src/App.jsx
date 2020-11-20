@@ -3,12 +3,12 @@ import "./App.css";
 import InventoryTavern from "./components/InventoryTavern";
 import InventoryMySelf from "./components/InventoryMySelf";
 import ingredientsList from "./components/ingredientsList";
+import Recipes from "./components/Recipes";
 import recipesList from "./components/recipesList";
 import Backgroundimg from "./images/background.svg";
 import styled from "styled-components";
 import bannerImg from "./images/Banner.svg";
 import tavernierImg from "./images/tavernier.svg";
-import Recipes from "./components/Recipes";
 
 const IngredientTavern = styled.div``;
 const IngredientBackpack = styled.div``;
@@ -22,6 +22,15 @@ const Apps = styled.div`
   width: 100%;
   height: 100%;
   font-family: cursive;
+
+  .ButtonChangeDraft {
+    padding: 10px;
+    background: red;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    color: #fff;
+  }
 `;
 
 const Block = styled.div`
@@ -79,6 +88,12 @@ const Recipe = styled.div`
   height: 500px;
   background-color: rgba(196, 196, 196, 0.5);
   border-radius: 5px;
+  p {
+    font-size: 25px;
+    text-align: center;
+    line-height: 1.5;
+    padding: 0 25px;
+  }
 `;
 
 const PlayerStuff = styled.div`
@@ -96,12 +111,19 @@ const Title = styled.h1`
   margin-top: 0px;
 `;
 
+const Victory = styled.div`
+  position: absolute;
+  top: 40%;
+  left: 50%;
+`;
+
 const Button = styled.button``;
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      menu: [],
       ingredient1: [],
       ingredient2: [],
       ingredient3: [],
@@ -136,11 +158,17 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
+    const randomElement = Math.floor(Math.random() * recipesList.length);
+    console.log(randomElement);
+    console.log(this.state.menu);
+    console.log(recipesList[randomElement]);
     this.setState({
       ingredient1: this.newImage(),
       ingredient2: this.newImage(),
       ingredient3: this.newImage(),
+      menu: recipesList[randomElement],
     });
+    console.log(this.state.menu);
   }
 
   componentDidUpdate(pP, pS) {
@@ -239,19 +267,13 @@ class App extends React.Component {
     return firstFilter[newRandom];
   }
 
-  newRecip() {
-    const nbElement = recipesList.length;
-    const randomElement = Math.floor(Math.random() * nbElement);
-    return <Recipes recipe={recipesList[randomElement]} />;
-  }
-
   render() {
-    console.log("render");
     const { ingredient1, ingredient2, ingredient3 } = this.state;
     return (
       <div className="App">
         <Apps>
           <Banner />
+          <Victory> Victoire ! </Victory>
           <Block>
             <Instructions>
               <Title>Instructions</Title>
@@ -270,7 +292,6 @@ class App extends React.Component {
               <TavernKeeper />
               <StuffTavernKeeper>
                 <Title>Stuff tavern keeper</Title>
-                <div>{this.newRecip()}</div>
                 <IngredientTavern>
                   <Button
                     onClick={() =>
@@ -316,6 +337,7 @@ class App extends React.Component {
                   </Button>
                 </IngredientTavern>
                 <button
+                  className="ButtonChangeDraft"
                   onClick={() =>
                     this.setState({
                       ingredient1: this.newImage(),
@@ -378,6 +400,7 @@ class App extends React.Component {
             </GameBoard>
             <Recipe>
               <Title>Recipe of the Day</Title>
+              <Recipes menu={this.state.menu} />
             </Recipe>
           </Block>
         </Apps>
