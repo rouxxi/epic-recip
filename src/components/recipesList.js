@@ -56,14 +56,14 @@ const recipesList = [{
 
     },
     {
-        name: 'Super-Patator',
-        description: "Lundi des patates, mardi des patates, mercredi des p....",
-        ingredient1: 'Patate',
-        ingredient2: 'Patate',
-        ingredient3: 'Patate',
-        img1: "./images/Patate.png",
-        img2: "./images/Patate.png",
-        img3: "./images/Patate.png",
+        name: 'Escargot volant',
+        description: "Escargot volant, je vole... je vole ! ",
+        ingredient1: 'Escargot',
+        ingredient2: 'Aile',
+        ingredient3: 'Potion-2',
+        img1: "./images/Escargot.png",
+        img2: "./images/Aile.png",
+        img3: "./images/Potion-2.png",
         id: 6,
 
     },
@@ -84,7 +84,7 @@ const recipesList = [{
 
     {
         name: 'Le Sanglant Smoothie',
-        description: "Une recette sortie tout droit de pensylvanie !",
+        description: "Dracula ?",
         ingredient1: 'Glace',
         ingredient2: "Viande-2",
         ingredient3: 'Poisson',
@@ -109,7 +109,7 @@ const recipesList = [{
 
     },
     {
-        name: 'lembas',
+        name: 'Lembas',
         description: "Petit mais consistant !!",
         ingredient1: 'Fleur-2',
         ingredient2: 'Courgette',
