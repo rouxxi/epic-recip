@@ -109,7 +109,7 @@ const recipesList = [{
 
     },
     {
-        name: 'lembas',
+        name: 'Lembas',
         description: "Petit mais consistant !!",
         ingredient1: 'Fleur-2',
         ingredient2: 'Courgette',
