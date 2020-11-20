@@ -11,6 +11,7 @@ import bannerImg from "./images/Banner.svg";
 import tavernierImg from "./images/tavernier.svg";
 import victoire from './images/Victory.png';
 import defeat from './images/defeat2.png';
+import Audio from './components/Audio'
 
 const IngredientTavern = styled.div``;
 const IngredientBackpack = styled.div``;
@@ -38,6 +39,11 @@ const Apps = styled.div`
 const Block = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+const Header = styled.div`
+  display: flex;
+
 `;
 
 const Banner = styled.div`
@@ -320,6 +326,10 @@ class App extends React.Component {
         <Apps>
           <Victory end={this.state.endGame}> <div><img src={this.state.victory ? victoire : defeat} alt="victoire" /></div></Victory>
           <Banner />
+          <Header>
+            <Banner />
+            <Audio/>
+          </Header>
           <Block>
             <Instructions>
               <Title>Instructions</Title>

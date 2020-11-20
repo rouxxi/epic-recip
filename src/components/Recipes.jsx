@@ -2,11 +2,24 @@ import React from "react";
 import styled from "styled-components";
 
 const Inventory = styled.div`
-  background-color: red;
   height: 100px;
   width: 100%;
 `;
+const Title = styled.h3`
+  text-align: center;
+  font-size: 26px;
+  padding-top: 10px;
+  margin-top: 0px;
+`;
+const ImgDivRecipes = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-item: center;
 
+  img {
+    margin-top: 2rem;
+  }
+`;
 class Recipes extends React.Component {
   constructor(props) {
     super(props);
@@ -16,11 +29,13 @@ class Recipes extends React.Component {
     const { menu } = this.props;
     return (
       <Inventory>
-        <p>{menu.name}</p>
+        <Title>{menu.name}</Title>
         <p>{menu.description}</p>
-        <img src={menu.img1} alt={menu.name} />
-        <img src={menu.img2} alt={menu.name} />
-        <img src={menu.img3} alt={menu.name} />
+        <ImgDivRecipes>
+          <img src={menu.img1} alt={menu.name} />
+          <img src={menu.img2} alt={menu.name} />
+          <img src={menu.img3} alt={menu.name} />
+        </ImgDivRecipes>
       </Inventory>
     );
   }
