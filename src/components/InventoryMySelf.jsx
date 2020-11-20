@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const Inventory = styled.div``;
+const Inventory = styled.div`
+  img {
+    width: 80px;
+    height: 80px;
+  }
+`;
 
 class InventoryMySelf extends React.Component {
   constructor(props) {
@@ -9,9 +14,10 @@ class InventoryMySelf extends React.Component {
     this.state = {};
   }
   render() {
+    const { image, name } = this.props;
     return (
       <Inventory>
-        <img src={this.props.image} alt={this.props.name} />
+        <img src={image} alt={name} />
       </Inventory>
     );
   }

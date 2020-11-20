@@ -3,12 +3,13 @@ import "./App.css";
 import InventoryTavern from "./components/InventoryTavern";
 import InventoryMySelf from "./components/InventoryMySelf";
 import ingredientsList from "./components/ingredientsList";
+import Recipes from "./components/Recipes";
+import recipesList from "./components/recipesList";
 import Backgroundimg from "./images/background.svg";
 import styled from "styled-components";
 import bannerImg from "./images/Banner.svg";
 import tavernierImg from "./images/tavernier.svg";
 import Audio from './components/Audio'
-
 
 const IngredientTavern = styled.div``;
 const IngredientBackpack = styled.div``;
@@ -22,6 +23,15 @@ const Apps = styled.div`
   width: 100vw;
   height: 100vh;
   font-family: cursive;
+
+  .ButtonChangeDraft {
+    padding: 10px;
+    background: red;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    color: #fff;
+  }
 `;
 
 const Block = styled.div`
@@ -44,11 +54,11 @@ const Banner = styled.div`
 `;
 
 const GameBoard = styled.div`
-  flex: 0 0 30%;  
+  flex: 0 0 30%;
 `;
 
 const TavernKeeper = styled.div`
-  background-image: url(${tavernierImg}); 
+  background-image: url(${tavernierImg});
   background-size: contain;
   background-repeat: no-repeat;
   margin: auto;
@@ -69,21 +79,27 @@ const Instructions = styled.div`
   background-color: rgba(196, 196, 196, 0.5);
   border-radius: 5px;
 
-    p {
-      font-size: 25px;
-      text-align: center;
-      line-height: 1.5;
-      padding:  0 25px;
-    }
+  p {
+    font-size: 25px;
+    text-align: center;
+    line-height: 1.5;
+    padding: 0 25px;
+  }
 `;
 
-const Recipe  = styled.div`
+const Recipe = styled.div`
   margin: 10px 100px 0 0;
   flex: 0 0 20%;
   max-width: 20%;
   height: 500px;
   background-color: rgba(196, 196, 196, 0.5);
   border-radius: 5px;
+  p {
+    font-size: 25px;
+    text-align: center;
+    line-height: 1.5;
+    padding: 0 25px;
+  }
 `;
 
 const PlayerStuff = styled.div`
@@ -101,10 +117,19 @@ const Title = styled.h1`
   margin-top: 0px;
 `;
 
+const Victory = styled.div`
+  position: absolute;
+  top: 40%;
+  left: 50%;
+`;
+
+const Button = styled.button``;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      menu: [],
       ingredient1: [],
       ingredient2: [],
       ingredient3: [],
@@ -139,11 +164,17 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
+    const randomElement = Math.floor(Math.random() * recipesList.length);
+    console.log(randomElement);
+    console.log(this.state.menu);
+    console.log(recipesList[randomElement]);
     this.setState({
       ingredient1: this.newImage(),
       ingredient2: this.newImage(),
       ingredient3: this.newImage(),
+      menu: recipesList[randomElement],
     });
+    console.log(this.state.menu);
   }
 
   componentDidUpdate(pP, pS) {
@@ -243,7 +274,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("render");
     const { ingredient1, ingredient2, ingredient3 } = this.state;
     return (
       <div className="App">
@@ -255,24 +285,23 @@ class App extends React.Component {
           <Block>
             <Instructions>
               <Title>Instructions</Title>
-                <p>Oyé Oyé voyageur ! Es-tu prêt à relever le défi ? 
-                  Les règles sont simples … Ton but est de réaliser 
-                  la recette du jour en récupérant tous ses ingrédients. 
-                  Pour ce faire, il va falloir user de tes talents de 
-                  troqueur et négocier avec le tavernier (peu commode) 
-                  en lui proposant un échange d’un de tes ingrédients 
-                  contre un des siens . Mais attention chaque ingrédient 
-                  a une valeur et une rareté, le tavernier ne se laissera 
-                  pas avoir...
-                </p>
+              <p>
+                Oyé Oyé voyageur ! Es-tu prêt à relever le défi ? Les règles
+                sont simples … Ton but est de réaliser la recette du jour en
+                récupérant tous ses ingrédients. Pour ce faire, il va falloir
+                user de tes talents de troqueur et négocier avec le tavernier
+                (peu commode) en lui proposant un échange d’un de tes
+                ingrédients contre un des siens . Mais attention chaque
+                ingrédient a une valeur et une rareté, le tavernier ne se
+                laissera pas avoir...
+              </p>
             </Instructions>
             <GameBoard>
               <TavernKeeper />
               <StuffTavernKeeper>
                 <Title>Stuff tavern keeper</Title>
-
                 <IngredientTavern>
-                  <button
+                  <Button
                     onClick={() =>
                       this.setState({
                         tavernValue: this.state.ingredient1,
@@ -285,8 +314,8 @@ class App extends React.Component {
                       image={ingredient1.img}
                       name={ingredient1.name}
                     />
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={() =>
                       this.setState({
                         tavernValue: this.state.ingredient2,
@@ -299,8 +328,8 @@ class App extends React.Component {
                       image={ingredient2.img}
                       name={ingredient2.name}
                     />
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={() =>
                       this.setState({
                         tavernValue: this.state.ingredient3,
@@ -313,9 +342,10 @@ class App extends React.Component {
                       image={ingredient3.img}
                       name={ingredient3.name}
                     />
-                  </button>
+                  </Button>
                 </IngredientTavern>
                 <button
+                  className="ButtonChangeDraft"
                   onClick={() =>
                     this.setState({
                       ingredient1: this.newImage(),
@@ -378,8 +408,9 @@ class App extends React.Component {
             </GameBoard>
             <Recipe>
               <Title>Recipe of the Day</Title>
+              <Recipes menu={this.state.menu} />
             </Recipe>
-          </Block>        
+          </Block>
         </Apps>
       </div>
     );
