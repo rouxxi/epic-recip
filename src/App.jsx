@@ -19,8 +19,9 @@ const Apps = styled.div`
   background-image: url(${Backgroundimg});
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  font-family: cursive;
 `;
 
 const Block = styled.div`
@@ -37,9 +38,8 @@ const Banner = styled.div`
   margin: auto;
 `;
 
-const Tavern = styled.div`
+const GameBoard = styled.div`
   flex: 0 0 30%;
-  max-width: 30%;
 `;
 
 const TavernKeeper = styled.div`
@@ -61,9 +61,15 @@ const Instructions = styled.div`
   flex: 0 0 20%;
   max-width: 20%;
   margin: 10px 0 0 100px;
-  height: 500px;
   background-color: rgba(196, 196, 196, 0.5);
   border-radius: 5px;
+
+  p {
+    font-size: 25px;
+    text-align: center;
+    line-height: 1.5;
+    padding: 0 25px;
+  }
 `;
 
 const Recipe = styled.div`
@@ -249,8 +255,18 @@ class App extends React.Component {
           <Block>
             <Instructions>
               <Title>Instructions</Title>
+              <p>
+                Oyé Oyé voyageur ! Es-tu prêt à relever le défi ? Les règles
+                sont simples … Ton but est de réaliser la recette du jour en
+                récupérant tous ses ingrédients. Pour ce faire, il va falloir
+                user de tes talents de troqueur et négocier avec le tavernier
+                (peu commode) en lui proposant un échange d’un de tes
+                ingrédients contre un des siens . Mais attention chaque
+                ingrédient a une valeur et une rareté, le tavernier ne se
+                laissera pas avoir...
+              </p>
             </Instructions>
-            <Tavern>
+            <GameBoard>
               <TavernKeeper />
               <StuffTavernKeeper>
                 <Title>Stuff tavern keeper</Title>
@@ -311,59 +327,59 @@ class App extends React.Component {
                   change the draft
                 </button>
               </StuffTavernKeeper>
-            </Tavern>
+              <PlayerStuff>
+                <Title>Your Stuff</Title>
+                <IngredientBackpack>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      this.setState({
+                        mySelfValue: this.state.myStuff2,
+                        mySelfButton: 1,
+                      })
+                    }
+                  >
+                    <InventoryMySelf
+                      image={this.state.myStuff1.img}
+                      name={this.state.myStuff1.name}
+                    />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      this.setState({
+                        mySelfValue: this.state.myStuff2,
+                        mySelfButton: 2,
+                      })
+                    }
+                  >
+                    <InventoryMySelf
+                      image={this.state.myStuff2.img}
+                      name={this.state.myStuff2.name}
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      this.setState({
+                        mySelfValue: this.state.myStuff3,
+                        mySelfButton: 3,
+                      })
+                    }
+                  >
+                    <InventoryMySelf
+                      image={this.state.myStuff3.img}
+                      name={this.state.myStuff3.name}
+                    />
+                  </button>
+                </IngredientBackpack>
+              </PlayerStuff>
+            </GameBoard>
             <Recipe>
               <Title>Recipe of the Day</Title>
             </Recipe>
           </Block>
-          <PlayerStuff>
-            <Title>Your Stuff</Title>
-            <IngredientBackpack>
-              <Button
-                type="button"
-                onClick={() =>
-                  this.setState({
-                    mySelfValue: this.state.myStuff2,
-                    mySelfButton: 1,
-                  })
-                }
-              >
-                <InventoryMySelf
-                  image={this.state.myStuff1.img}
-                  name={this.state.myStuff1.name}
-                />
-              </Button>
-
-              <Button
-                type="button"
-                onClick={() =>
-                  this.setState({
-                    mySelfValue: this.state.myStuff2,
-                    mySelfButton: 2,
-                  })
-                }
-              >
-                <InventoryMySelf
-                  image={this.state.myStuff2.img}
-                  name={this.state.myStuff2.name}
-                />
-              </Button>
-              <Button
-                type="button"
-                onClick={() =>
-                  this.setState({
-                    mySelfValue: this.state.myStuff3,
-                    mySelfButton: 3,
-                  })
-                }
-              >
-                <InventoryMySelf
-                  image={this.state.myStuff3.img}
-                  name={this.state.myStuff3.name}
-                />
-              </Button>
-            </IngredientBackpack>
-          </PlayerStuff>
         </Apps>
       </div>
     );
