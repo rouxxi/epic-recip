@@ -373,22 +373,20 @@ class App extends React.Component {
           </Header>
           <Block>
             <Instructions className="instructions">
-              <Title>Instructions</Title>
+              <Title>Consignes</Title>
               <p>
                 Oyé Oyé voyageur ! Es-tu prêt à relever le défi ? Les règles
                 sont simples … Ton but est de réaliser la recette du jour en
-                récupérant tous ses ingrédients. Pour ce faire, il va falloir
+                récupérant tous les ingrédients. Pour ce faire, il va falloir
                 user de tes talents de troqueur et négocier avec le tavernier
-                (peu commode) en lui proposant un échange d’un de tes
-                ingrédients contre un des siens . Mais attention chaque
-                ingrédient a une valeur et une rareté, le tavernier ne se
-                laissera pas avoir...
+                (peu commode) en lui proposant d'echanger un de tes ingrédients . Mais attention
+                le tavernier a peu de patience...
               </p>
             </Instructions>
             <GameBoard>
               <TavernKeeper />
               <StuffTavernKeeper className="tavernier">
-                <Title>Stuff tavern keeper</Title>
+                <Title>Tavernier</Title>
                 <IngredientTavern>
                   <div>
                     <Button
@@ -436,7 +434,7 @@ class App extends React.Component {
                     </Button>
                   </div>
                   <Reroll>
-                    <p>Reroll Restant {this.state.counterlife} </p>
+                    <p>Relances Restantes {this.state.counterlife} </p>
                   <button
                     className="ButtonChangeDraft"
                     onClick={() =>
@@ -452,7 +450,7 @@ class App extends React.Component {
                 </IngredientTavern>
               </StuffTavernKeeper>
               <PlayerStuff className="player">
-                <Title>Your Stuff</Title>
+                <Title>Mon Inventaire</Title>
                 <IngredientBackpack>
                   <button
                     type="button"
@@ -501,7 +499,7 @@ class App extends React.Component {
               </PlayerStuff>
             </GameBoard>
             <Recipe>
-              <Title>Recipe of the Day</Title>
+              <Title>Recette du jour</Title>
               <Recipes menu={this.state.menu} />
             </Recipe>
           </Block>

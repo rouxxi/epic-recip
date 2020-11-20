@@ -38,7 +38,7 @@ class Audio extends React.Component {
   render() {
       return(
             <Player play= {this.state.play}> 
-                <button onClick={this.handlePlay}>{this.state.play ? 'Music On' : 'Music Off'}</button>       
+                <button onClick={this.handlePlay}>{this.state.play ? 'Musique On' : 'Musique Off'}</button>       
                 <audio id="music" src={Music} autoPlay="false" />
             </Player>
     )

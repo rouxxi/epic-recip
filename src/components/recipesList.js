@@ -22,7 +22,7 @@ const recipesList = [{
 
     }, {
         name: 'Carnivore',
-        description: 'Miam, Miam ! Moi mangez viande ! ',
+        description: 'Miam, Miam ! Moi manger viande ! ',
         ingredient1: 'Viande-1',
         ingredient2: 'Viande-2',
         ingredient3: 'Dragon',
@@ -45,7 +45,7 @@ const recipesList = [{
     },
     {
         name: 'Potion',
-        description: 'Si on mélange toutes ces potions, peut-être que quelques choses va se passer ? ',
+        description: 'Si on mélange toutes ces potions, peut-être que quelque chose va se passer ? ',
         ingredient1: 'Potion-1',
         ingredient2: 'Potion-2',
         ingredient3: 'Potion-3',
