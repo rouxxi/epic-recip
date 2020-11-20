@@ -6,11 +6,13 @@ import ingredientsList from "./components/ingredientsList";
 import Recipes from "./components/Recipes";
 import recipesList from "./components/recipesList";
 import Backgroundimg from "./images/background.svg";
+import ButtonImg from "./images/button2.png";
 import styled from "styled-components";
 import bannerImg from "./images/Banner.svg";
 import tavernierImg from "./images/tavernier.svg";
 
 const IngredientTavern = styled.div``;
+
 const IngredientBackpack = styled.div``;
 
 const Apps = styled.div`
@@ -24,12 +26,20 @@ const Apps = styled.div`
   font-family: cursive;
 
   .ButtonChangeDraft {
-    padding: 10px;
-    background: red;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    color: #fff;
+    width: 60px;
+    height: 60px;
+    background-image: url(${ButtonImg});
+    background-position: center;
+    background-size: cover;
+    margin-top: 5%;
+  }
+
+  .player, .tavernier {
+    text-align: center;
+    height: auto;
+    width: 100%;
+    padding: 10%;
   }
 `;
 
@@ -61,7 +71,7 @@ const TavernKeeper = styled.div`
 `;
 
 const StuffTavernKeeper = styled.div`
-  height: 150px;
+  height: auto;
   background-color: rgba(196, 196, 196, 0.5);
   border-radius: 5px;
 `;
@@ -290,66 +300,69 @@ class App extends React.Component {
             </Instructions>
             <GameBoard>
               <TavernKeeper />
-              <StuffTavernKeeper>
+              <StuffTavernKeeper className="tavernier">
+                
                 <Title>Stuff tavern keeper</Title>
                 <IngredientTavern>
-                  <Button
+                  <div>
+                    <Button
+                      onClick={() =>
+                        this.setState({
+                          tavernValue: this.state.ingredient1,
+                          tavernButton: 1,
+                        })
+                      }
+                      type="button"
+                    >
+                      <InventoryTavern
+                        image={ingredient1.img}
+                        name={ingredient1.name}
+                      />
+                    </Button>
+
+                    <Button
+                      onClick={() =>
+                        this.setState({
+                          tavernValue: this.state.ingredient2,
+                          tavernButton: 2,
+                        })
+                      }
+                      type="button"
+                    >
+                      <InventoryTavern
+                        image={ingredient2.img}
+                        name={ingredient2.name}
+                      />
+                    </Button>
+                    <Button
+                      onClick={() =>
+                        this.setState({
+                          tavernValue: this.state.ingredient3,
+                          tavernButton: 3,
+                        })
+                      }
+                      type="button"
+                    >
+                      <InventoryTavern
+                        image={ingredient3.img}
+                        name={ingredient3.name}
+                      />
+                    </Button>
+                    
+                  </div>
+                  <button
+                    className="ButtonChangeDraft"
                     onClick={() =>
                       this.setState({
-                        tavernValue: this.state.ingredient1,
-                        tavernButton: 1,
+                        ingredient1: this.newImage(),
+                        ingredient2: this.newImage(),
+                        ingredient3: this.newImage(),
                       })
                     }
-                    type="button"
-                  >
-                    <InventoryTavern
-                      image={ingredient1.img}
-                      name={ingredient1.name}
-                    />
-                  </Button>
-                  <Button
-                    onClick={() =>
-                      this.setState({
-                        tavernValue: this.state.ingredient2,
-                        tavernButton: 2,
-                      })
-                    }
-                    type="button"
-                  >
-                    <InventoryTavern
-                      image={ingredient2.img}
-                      name={ingredient2.name}
-                    />
-                  </Button>
-                  <Button
-                    onClick={() =>
-                      this.setState({
-                        tavernValue: this.state.ingredient3,
-                        tavernButton: 3,
-                      })
-                    }
-                    type="button"
-                  >
-                    <InventoryTavern
-                      image={ingredient3.img}
-                      name={ingredient3.name}
-                    />
-                  </Button>
+                  ></button>
                 </IngredientTavern>
-                <button
-                  className="ButtonChangeDraft"
-                  onClick={() =>
-                    this.setState({
-                      ingredient1: this.newImage(),
-                      ingredient2: this.newImage(),
-                      ingredient3: this.newImage(),
-                    })
-                  }
-                >
-                  change the draft
-                </button>
               </StuffTavernKeeper>
-              <PlayerStuff>
+              <PlayerStuff className="player">
                 <Title>Your Stuff</Title>
                 <IngredientBackpack>
                   <button
