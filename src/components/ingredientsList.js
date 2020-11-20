@@ -28,7 +28,7 @@ const ingredientsList = [{
     },
     {
         id: 5,
-        img: "./images/Ananas.png ",
+        img: "./images/Ananas.png",
         name: "Ananas",
         rating: 77,
         rarity: "commun",

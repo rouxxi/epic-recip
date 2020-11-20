@@ -4,6 +4,9 @@ const recipesList = [{
         ingredient1: 'Patate',
         ingredient2: 'Courgette',
         ingredient3: 'Tomate',
+        img1: './images/Patate.png',
+        img2: './images/Courgette.png',
+        img3: './images/Tomate.png',
         id: 1,
     },
     {
@@ -12,6 +15,9 @@ const recipesList = [{
         ingredient1: 'Aile',
         ingredient2: 'Dent',
         ingredient3: 'Fleur-1',
+        img1: './images/Aile.png',
+        img2: './images/Dent.png',
+        img3: './images/Fleur-1.png',
         id: 2,
 
     }, {
@@ -20,6 +26,9 @@ const recipesList = [{
         ingredient1: 'Viande-1',
         ingredient2: 'Viande-2',
         ingredient3: 'Dragon',
+        img1: './images/Viande-1.png',
+        img2: './images/Viande-2.png',
+        img3: './images/Dragon.png',
         id: 3,
 
     }, {
@@ -28,6 +37,9 @@ const recipesList = [{
         ingredient1: 'Banane',
         ingredient2: 'Ananas',
         ingredient3: 'Tomate',
+        img1: './images/Banane.png',
+        img2: './images/Ananas.png',
+        img3: './images/Tomate.png',
         id: 4,
 
     },
@@ -37,6 +49,9 @@ const recipesList = [{
         ingredient1: 'Potion-1',
         ingredient2: 'Potion-2',
         ingredient3: 'Potion-3',
+        img1: './images/Potion-1.png',
+        img2: './images/Potion-2.png',
+        img3: './images/Potion-3.png',
         id: 5,
 
     },
@@ -46,6 +61,9 @@ const recipesList = [{
         ingredient1: 'Patate',
         ingredient2: 'Patate',
         ingredient3: 'Patate',
+        img1: "./images/Patate.png",
+        img2: "./images/Patate.png",
+        img3: "./images/Patate.png",
         id: 6,
 
     },
@@ -57,6 +75,9 @@ const recipesList = [{
         ingredient1: 'Dragon',
         ingredient2: 'Dent',
         ingredient3: 'Aile',
+        img1: "./images/Dragon.png",
+        img2: "./images/Dent.png",
+        img3: "./images/Aile.png",
         id: 7,
 
     },
@@ -67,6 +88,9 @@ const recipesList = [{
         ingredient1: 'Glace',
         ingredient2: "Viande-2",
         ingredient3: 'Poisson',
+        img1: "./images/Glace.png",
+        img2: "./images/Viande-2.png",
+        img3: "./images/Poisson.png",
         id: 8,
 
     },
@@ -78,6 +102,9 @@ const recipesList = [{
         ingredient1: 'Livre',
         ingredient2: 'Potion-2',
         ingredient3: 'Dragon',
+        img1: "./images/Livre.png",
+        img2: "./images/Potion-2.png",
+        img3: "./images/Dragon.png",
         id: 9,
 
     },
@@ -87,6 +114,9 @@ const recipesList = [{
         ingredient1: 'Fleur-2',
         ingredient2: 'Courgette',
         ingredient3: 'Poivron',
+        img1: './images/Fleur-2.png',
+        img2: './images/Courgette.png',
+        img3: './images/Poivron.png',
         id: 10,
 
     },
@@ -96,6 +126,9 @@ const recipesList = [{
         ingredient1: 'Fleur-2',
         ingredient2: 'Poivron',
         ingredient3: 'Tomate',
+        img1: './images/Fleur-2.png',
+        img2: './images/Poivron.png',
+        img3: './images/Tomate.png',
         id: 11,
 
     },
