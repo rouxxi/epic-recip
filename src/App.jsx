@@ -14,9 +14,29 @@ import victoire from './images/Victory.png';
 import defeat from './images/defeat2.png';
 import Audio from './components/Audio'
 
-const IngredientTavern = styled.div``;
+const Reroll = styled.div`
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 
-const IngredientBackpack = styled.div``;
+ p{
+   padding:0;
+   margin:0;
+ }
+`;
+
+const IngredientTavern = styled.div`
+  display:flex;
+  justify-content: space-around;
+  align-items:center;
+  padding:10px;
+`;
+
+const IngredientBackpack = styled.div`
+padding:5px;
+margin:5px;
+`;
 
 const Apps = styled.div`
   margin: 0;
@@ -25,7 +45,7 @@ const Apps = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   font-family: cursive;
 
   .ButtonChangeDraft {
@@ -43,13 +63,15 @@ const Apps = styled.div`
     text-align: center;
     height: auto;
     width: 100%;
-    padding: 10%;
+    padding:5px
   }
 `;
 
 const Block = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top:80px;
+  padding-top:0;
 `;
 
 const Header = styled.div`
@@ -64,6 +86,10 @@ const Banner = styled.div`
   width: 465px;
   height: 152px;
   margin: auto;
+  position:absolute;
+  left:0;
+  right:0;
+
 `;
 
 const GameBoard = styled.div`
@@ -80,16 +106,16 @@ const TavernKeeper = styled.div`
 `;
 
 const StuffTavernKeeper = styled.div`
-  height: auto;
-  background-color: rgba(196, 196, 196, 0.5);
+  background-color: rgba(196, 196, 196, 0.7);
   border-radius: 5px;
 `;
 
 const Instructions = styled.div`
   flex: 0 0 20%;
+  height:fit-content;
   max-width: 20%;
   margin: 10px 0 0 100px;
-  background-color: rgba(196, 196, 196, 0.5);
+  background-color: rgba(196, 196, 196, 0.7);
   border-radius: 5px;
 
   p {
@@ -108,8 +134,8 @@ const Recipe = styled.div`
   margin: 10px 100px 0 0;
   flex: 0 0 20%;
   max-width: 20%;
-  height: 500px;
-  background-color: rgba(196, 196, 196, 0.5);
+  height: 450px;
+  background-color: rgba(196, 196, 196, 0.7);
   border-radius: 5px;
   p {
     font-size: 25px;
@@ -120,22 +146,23 @@ const Recipe = styled.div`
 `;
 
 const PlayerStuff = styled.div`
-  height: 150px;
   width: 700px;
   margin: 30px auto 0 auto;
-  background-color: rgba(196, 196, 196, 0.5);
+  background-color: rgba(196, 196, 196, 0.7);
   border-radius: 5px;
 `;
 
 const Title = styled.h1`
   text-align: center;
   font-size: 36px;
-  padding-top: 10px;
+  padding-top: 5px;
+  padding-bottom:5px;
+  margin-bottom:5px;
   margin-top: 0px;
 `;
 
 const Victory = styled.div`
-  background-color:rgba(0,0,0,0.5);
+  background-color:rgba(0,0,0,0.7);
   position: absolute;
   z-index:10;
   display:${({ end }) => end ? 'flex' : 'none'};
@@ -341,7 +368,7 @@ class App extends React.Component {
         <Apps>
           <Victory end={this.state.endGame}> <div><img src={this.state.victory ? victoire : defeat} alt="victoire" /></div></Victory>
           <Header>
-            <Banner />
+          <Banner />
             <Audio/>
           </Header>
           <Block>
@@ -408,6 +435,8 @@ class App extends React.Component {
                       />
                     </Button>
                   </div>
+                  <Reroll>
+                    <p>Reroll Restant {this.state.counterlife} </p>
                   <button
                     className="ButtonChangeDraft"
                     onClick={() =>
@@ -419,6 +448,7 @@ class App extends React.Component {
                       })
                     }
                   ></button>
+                  </Reroll>
                 </IngredientTavern>
               </StuffTavernKeeper>
               <PlayerStuff className="player">
