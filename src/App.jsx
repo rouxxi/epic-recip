@@ -325,7 +325,6 @@ class App extends React.Component {
       <div className="App">
         <Apps>
           <Victory end={this.state.endGame}> <div><img src={this.state.victory ? victoire : defeat} alt="victoire" /></div></Victory>
-          <Banner />
           <Header>
             <Banner />
             <Audio/>
