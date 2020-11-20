@@ -17,8 +17,8 @@ const Apps = styled.div`
   background-image: url(${Backgroundimg});
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 `;
 
 const Block = styled.div`
