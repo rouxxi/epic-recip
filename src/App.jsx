@@ -3,10 +3,12 @@ import "./App.css";
 import InventoryTavern from "./components/InventoryTavern";
 import InventoryMySelf from "./components/InventoryMySelf";
 import ingredientsList from "./components/ingredientsList";
+import recipesList from "./components/recipesList";
 import Backgroundimg from "./images/background.svg";
 import styled from "styled-components";
 import bannerImg from "./images/Banner.svg";
 import tavernierImg from "./images/tavernier.svg";
+import Recipes from "./components/Recipes";
 
 const IngredientTavern = styled.div``;
 const IngredientBackpack = styled.div``;
@@ -87,6 +89,8 @@ const Title = styled.h1`
   padding-top: 10px;
   margin-top: 0px;
 `;
+
+const Button = styled.button``;
 
 class App extends React.Component {
   constructor(props) {
@@ -229,6 +233,12 @@ class App extends React.Component {
     return firstFilter[newRandom];
   }
 
+  newRecip() {
+    const nbElement = recipesList.length;
+    const randomElement = Math.floor(Math.random() * nbElement);
+    return <Recipes recipe={recipesList[randomElement]} />;
+  }
+
   render() {
     console.log("render");
     const { ingredient1, ingredient2, ingredient3 } = this.state;
@@ -244,9 +254,9 @@ class App extends React.Component {
               <TavernKeeper />
               <StuffTavernKeeper>
                 <Title>Stuff tavern keeper</Title>
-
+                <div>{this.newRecip()}</div>
                 <IngredientTavern>
-                  <button
+                  <Button
                     onClick={() =>
                       this.setState({
                         tavernValue: this.state.ingredient1,
@@ -259,8 +269,8 @@ class App extends React.Component {
                       image={ingredient1.img}
                       name={ingredient1.name}
                     />
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={() =>
                       this.setState({
                         tavernValue: this.state.ingredient2,
@@ -273,8 +283,8 @@ class App extends React.Component {
                       image={ingredient2.img}
                       name={ingredient2.name}
                     />
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={() =>
                       this.setState({
                         tavernValue: this.state.ingredient3,
@@ -287,7 +297,7 @@ class App extends React.Component {
                       image={ingredient3.img}
                       name={ingredient3.name}
                     />
-                  </button>
+                  </Button>
                 </IngredientTavern>
                 <button
                   onClick={() =>
@@ -309,7 +319,7 @@ class App extends React.Component {
           <PlayerStuff>
             <Title>Your Stuff</Title>
             <IngredientBackpack>
-              <button
+              <Button
                 type="button"
                 onClick={() =>
                   this.setState({
@@ -322,9 +332,9 @@ class App extends React.Component {
                   image={this.state.myStuff1.img}
                   name={this.state.myStuff1.name}
                 />
-              </button>
+              </Button>
 
-              <button
+              <Button
                 type="button"
                 onClick={() =>
                   this.setState({
@@ -337,8 +347,8 @@ class App extends React.Component {
                   image={this.state.myStuff2.img}
                   name={this.state.myStuff2.name}
                 />
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
                 onClick={() =>
                   this.setState({
@@ -351,7 +361,7 @@ class App extends React.Component {
                   image={this.state.myStuff3.img}
                   name={this.state.myStuff3.name}
                 />
-              </button>
+              </Button>
             </IngredientBackpack>
           </PlayerStuff>
         </Apps>

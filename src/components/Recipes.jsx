@@ -1,16 +1,20 @@
-import React, {Component} from 'react';
+import React from "react";
+import styled from "styled-components";
 
-class Recipes extends Component{
-  constructor(props){
-    super(props)
-    this.state = {}
+const Inventory = styled.div``;
+
+class InventoryMySelf extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
-
-  render(){
-    return(
-      <div> </div>
-    )
+  render() {
+    return (
+      <Inventory>
+        <img src={this.props.image} alt={this.props.name} />
+      </Inventory>
+    );
   }
 }
 
-export default Recipes;
+export default InventoryMySelf;
