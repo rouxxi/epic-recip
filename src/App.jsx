@@ -9,6 +9,8 @@ import Backgroundimg from "./images/background.svg";
 import styled from "styled-components";
 import bannerImg from "./images/Banner.svg";
 import tavernierImg from "./images/tavernier.svg";
+import victoire from './images/Victory.png';
+import defeat from './images/defeat2.png';
 
 const IngredientTavern = styled.div``;
 const IngredientBackpack = styled.div``;
@@ -112,9 +114,15 @@ const Title = styled.h1`
 `;
 
 const Victory = styled.div`
+  background-color:rgba(0,0,0,0.5);
   position: absolute;
-  top: 40%;
-  left: 50%;
+  z-index:10;
+  display:${({ end }) => end ? 'flex' : 'none'};
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:100%;
+  opacity: ${({ end }) => end ? 1 : 0};
 `;
 
 const Button = styled.button``;
@@ -155,6 +163,8 @@ class App extends React.Component {
       mySelfValue: null,
       tavernButton: null,
       mySelfButton: null,
+      endGame: false,
+      victory: false,
     };
   }
   componentDidMount() {
@@ -244,6 +254,42 @@ class App extends React.Component {
         }
       }
     }
+
+    if((this.state.myStuff1.name === this.state.menu.ingredient1 || this.state.myStuff1.name === this.state.menu.ingredient2 || this.state.myStuff1.name === this.state.menu.ingredient3) && 
+    (this.state.myStuff2.name === this.state.menu.ingredient1 || this.state.myStuff2.name === this.state.menu.ingredient2 || this.state.myStuff2.name === this.state.menu.ingredient3) &&
+    (this.state.myStuff3.name === this.state.menu.ingredient1 || this.state.myStuff3.name === this.state.menu.ingredient2 || this.state.myStuff3.name === this.state.menu.ingredient3)){
+      this.setState({
+        victory : true,
+        endGame: true,
+        myStuff1:{
+          id: 12,
+          img: "./images/Patate.png",
+          name: "Patate",
+          rating: 88,
+          rarity: "commun",
+        },
+        myStuff2:{
+          id: 12,
+          img: "./images/Patate.png",
+          name: "Patate",
+          rating: 88,
+          rarity: "commun",
+        },
+        myStuff3:{
+          id: 12,
+          img: "./images/Patate.png",
+          name: "Patate",
+          rating: 88,
+          rarity: "commun",
+        },
+      })
+    }else if (this.state.counterlife === -1){
+      this.setState({ 
+      endGame: true,
+      counterlife:0,})
+    }
+
+
   }
   randomRarityCalc() {
     const random = Math.floor(Math.random() * 100) + 1;
@@ -272,8 +318,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <Apps>
+          <Victory end={this.state.endGame}> <div><img src={this.state.victory ? victoire : defeat} alt="victoire" /></div></Victory>
           <Banner />
-          <Victory> Victoire ! </Victory>
           <Block>
             <Instructions>
               <Title>Instructions</Title>
@@ -343,6 +389,7 @@ class App extends React.Component {
                       ingredient1: this.newImage(),
                       ingredient2: this.newImage(),
                       ingredient3: this.newImage(),
+                      counterlife: this.state.counterlife - 1,
                     })
                   }
                 >
