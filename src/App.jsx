@@ -29,6 +29,7 @@ const Reroll = styled.div`
 
 const IngredientTavern = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   padding: 10px;
@@ -110,15 +111,13 @@ const StuffTavernKeeper = styled.div`
 `;
 
 const Instructions = styled.div`
-  flex: 0 0 20%;
+  flex: 0 0 25%;
   height: fit-content;
-  max-width: 20%;
-  margin: 10px 0 0 100px;
+  margin: 10px 0 0 50px;
   background-color: rgba(196, 196, 196, 0.7);
   border-radius: 5px;
 
   p {
-    font-size: 25px;
     text-align: center;
     line-height: 1.5;
     padding: 0 25px;
@@ -126,20 +125,6 @@ const Instructions = styled.div`
 
   @media screen and (max-width: 500px) {
     display: none;
-  }
-`;
-
-const Recipe = styled.div`
-  margin: 10px 100px 0 0;
-  flex: 0 0 20%;
-  max-width: 20%;
-  height: 450px;
-
-  p {
-    font-size: 25px;
-    text-align: center;
-    line-height: 1.5;
-    padding: 0 25px;
   }
 `;
 
@@ -152,7 +137,7 @@ const PlayerStuff = styled.div`
 
 const Title = styled.h1`
   text-align: center;
-  font-size: 36px;
+  font-size: 29px;
   padding-top: 5px;
   padding-bottom: 5px;
   margin-bottom: 5px;
@@ -171,6 +156,11 @@ const Victory = styled.div`
   height: 100%;
   opacity: ${({ end }) => (end ? 1 : 0)};
 `;
+
+const Intro = styled.p`
+  font-size: 1.2rem;
+`;
+
 const BUBU = styled.button`
   position: absolute;
   left: auto;
@@ -404,7 +394,7 @@ class App extends React.Component {
           <Block>
             <Instructions className='instructions'>
               <Title>Instructions</Title>
-              <p>
+              <Intro>
                 Oyé Oyé voyageur ! Es-tu prêt à relever le défi ? Les règles
                 sont simples … Ton but est de réaliser la recette du jour en
                 récupérant tous ses ingrédients. Pour ce faire, il va falloir
@@ -413,7 +403,7 @@ class App extends React.Component {
                 ingrédients contre un des siens . Mais attention chaque
                 ingrédient a une valeur et une rareté, le tavernier ne se
                 laissera pas avoir...
-              </p>
+              </Intro>
             </Instructions>
             <GameBoard>
               <TavernKeeper />
@@ -530,9 +520,7 @@ class App extends React.Component {
                 </IngredientBackpack>
               </PlayerStuff>
             </GameBoard>
-            <Recipe>
-              <Recipes menu={this.state.menu} />
-            </Recipe>
+            <Recipes menu={this.state.menu} />
           </Block>
         </Apps>
       </div>

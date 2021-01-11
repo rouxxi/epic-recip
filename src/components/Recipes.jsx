@@ -8,6 +8,18 @@ const Inventory = styled.div`
   border-radius: 5px;
   height: 100%;
   width: 100%;
+  margin: 10px 50px 0 0;
+  flex: 0 0 25%;
+  max-width: 28%;
+  min-height: 400px;
+  height: fit-content;
+
+  p {
+    font-size: 25px;
+    text-align: center;
+    line-height: 1.5;
+    padding: 0 25px;
+  }
 `;
 const Title = styled.h3`
   text-align: center;
@@ -19,6 +31,7 @@ const ImgDivRecipes = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
   img {
     margin-top: 2rem;
   }
