@@ -1,41 +1,42 @@
-import React from "react";
-import "./App.css";
-import InventoryTavern from "./components/InventoryTavern";
-import InventoryMySelf from "./components/InventoryMySelf";
-import ingredientsList from "./components/ingredientsList";
-import Recipes from "./components/Recipes";
-import recipesList from "./components/recipesList";
-import Backgroundimg from "./images/background.svg";
-import ButtonImg from "./images/button2.png";
-import styled from "styled-components";
-import bannerImg from "./images/Banner.svg";
-import tavernierImg from "./images/tavernier.svg";
+import React from 'react';
+import './App.css';
+import InventoryTavern from './components/InventoryTavern';
+import InventoryMySelf from './components/InventoryMySelf';
+import ingredientsList from './components/ingredientsList';
+import Recipes from './components/Recipes';
+import recipesList from './components/recipesList';
+import Backgroundimg from './images/background.svg';
+import ButtonImg from './images/button2.png';
+import styled from 'styled-components';
+import bannerImg from './images/Banner.svg';
+import tavernierImg from './images/tavernier.svg';
 import victoire from './images/Victory.png';
 import defeat from './images/defeat2.png';
-import Audio from './components/Audio'
+import Audio from './components/Audio';
+import bg_paneau from './images/boutton.png';
 
 const Reroll = styled.div`
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
- p{
-   padding:0;
-   margin:0;
- }
+  p {
+    padding: 0;
+    margin: 0;
+  }
 `;
 
 const IngredientTavern = styled.div`
-  display:flex;
+  display: flex;
   justify-content: space-around;
-  align-items:center;
-  padding:10px;
+  align-items: center;
+  padding: 10px;
 `;
 
 const IngredientBackpack = styled.div`
-padding:5px;
-margin:5px;
+  padding: 5px;
+  margin: 5px;
 `;
 
 const Apps = styled.div`
@@ -63,20 +64,19 @@ const Apps = styled.div`
     text-align: center;
     height: auto;
     width: 100%;
-    padding:5px
+    padding: 5px;
   }
 `;
 
 const Block = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top:80px;
-  padding-top:0;
+  margin-top: 80px;
+  padding-top: 0;
 `;
 
 const Header = styled.div`
   display: flex;
-
 `;
 
 const Banner = styled.div`
@@ -86,10 +86,9 @@ const Banner = styled.div`
   width: 465px;
   height: 152px;
   margin: auto;
-  position:absolute;
-  left:0;
-  right:0;
-
+  position: absolute;
+  left: 0;
+  right: 0;
 `;
 
 const GameBoard = styled.div`
@@ -112,7 +111,7 @@ const StuffTavernKeeper = styled.div`
 
 const Instructions = styled.div`
   flex: 0 0 20%;
-  height:fit-content;
+  height: fit-content;
   max-width: 20%;
   margin: 10px 0 0 100px;
   background-color: rgba(196, 196, 196, 0.7);
@@ -135,8 +134,7 @@ const Recipe = styled.div`
   flex: 0 0 20%;
   max-width: 20%;
   height: 450px;
-  background-color: rgba(196, 196, 196, 0.7);
-  border-radius: 5px;
+
   p {
     font-size: 25px;
     text-align: center;
@@ -156,21 +154,38 @@ const Title = styled.h1`
   text-align: center;
   font-size: 36px;
   padding-top: 5px;
-  padding-bottom:5px;
-  margin-bottom:5px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
   margin-top: 0px;
 `;
 
 const Victory = styled.div`
-  background-color:rgba(0,0,0,0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
-  z-index:10;
-  display:${({ end }) => end ? 'flex' : 'none'};
-  align-items:center;
-  justify-content:center;
-  width:100%;
-  height:100%;
-  opacity: ${({ end }) => end ? 1 : 0};
+  z-index: 10;
+  display: ${({ end }) => (end ? 'flex' : 'none')};
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  opacity: ${({ end }) => (end ? 1 : 0)};
+`;
+const BUBU = styled.button`
+  position: absolute;
+  left: auto;
+  right: auto;
+  bottom: 80px;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 900;
+  text-shadow: 1px 1px 0 #423b35;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  outline-style: none;
+  background-image: url(${bg_paneau});
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 const Button = styled.button``;
@@ -185,24 +200,24 @@ class App extends React.Component {
       ingredient3: [],
       myStuff1: {
         id: 12,
-        img: "./images/Patate.png",
-        name: "Patate",
+        img: './images/Patate.png',
+        name: 'Patate',
         rating: 88,
-        rarity: "commun",
+        rarity: 'commun',
       },
       myStuff2: {
         id: 12,
-        img: "./images/Patate.png",
-        name: "Patate",
+        img: './images/Patate.png',
+        name: 'Patate',
         rating: 88,
-        rarity: "commun",
+        rarity: 'commun',
       },
       myStuff3: {
         id: 12,
-        img: "./images/Patate.png",
-        name: "Patate",
+        img: './images/Patate.png',
+        name: 'Patate',
         rating: 88,
-        rarity: "commun",
+        rarity: 'commun',
       },
       counterlife: 10,
       clickTavern: false,
@@ -303,50 +318,57 @@ class App extends React.Component {
       }
     }
 
-    if((this.state.myStuff1.name === this.state.menu.ingredient1 || this.state.myStuff1.name === this.state.menu.ingredient2 || this.state.myStuff1.name === this.state.menu.ingredient3) && 
-    (this.state.myStuff2.name === this.state.menu.ingredient1 || this.state.myStuff2.name === this.state.menu.ingredient2 || this.state.myStuff2.name === this.state.menu.ingredient3) &&
-    (this.state.myStuff3.name === this.state.menu.ingredient1 || this.state.myStuff3.name === this.state.menu.ingredient2 || this.state.myStuff3.name === this.state.menu.ingredient3)){
+    if (
+      (this.state.myStuff1.name === this.state.menu.ingredient1 ||
+        this.state.myStuff1.name === this.state.menu.ingredient2 ||
+        this.state.myStuff1.name === this.state.menu.ingredient3) &&
+      (this.state.myStuff2.name === this.state.menu.ingredient1 ||
+        this.state.myStuff2.name === this.state.menu.ingredient2 ||
+        this.state.myStuff2.name === this.state.menu.ingredient3) &&
+      (this.state.myStuff3.name === this.state.menu.ingredient1 ||
+        this.state.myStuff3.name === this.state.menu.ingredient2 ||
+        this.state.myStuff3.name === this.state.menu.ingredient3)
+    ) {
       this.setState({
-        victory : true,
+        victory: true,
         endGame: true,
-        myStuff1:{
+        myStuff1: {
           id: 12,
-          img: "./images/Patate.png",
-          name: "Patate",
+          img: './images/Patate.png',
+          name: 'Patate',
           rating: 88,
-          rarity: "commun",
+          rarity: 'commun',
         },
-        myStuff2:{
+        myStuff2: {
           id: 12,
-          img: "./images/Patate.png",
-          name: "Patate",
+          img: './images/Patate.png',
+          name: 'Patate',
           rating: 88,
-          rarity: "commun",
+          rarity: 'commun',
         },
-        myStuff3:{
+        myStuff3: {
           id: 12,
-          img: "./images/Patate.png",
-          name: "Patate",
+          img: './images/Patate.png',
+          name: 'Patate',
           rating: 88,
-          rarity: "commun",
+          rarity: 'commun',
         },
-      })
-    }else if (this.state.counterlife === -1){
-      this.setState({ 
-      endGame: true,
-      counterlife:0,})
+      });
+    } else if (this.state.counterlife === -1) {
+      this.setState({
+        endGame: true,
+        counterlife: 0,
+      });
     }
-
-
   }
   randomRarityCalc() {
     const random = Math.floor(Math.random() * 100) + 1;
-    let rarity = "commun";
+    let rarity = 'commun';
 
     if (random < 20) {
-      rarity = "rare";
+      rarity = 'rare';
     } else if (random < 50) {
-      rarity = "uncommun";
+      rarity = 'uncommun';
     }
     return rarity;
   }
@@ -364,15 +386,23 @@ class App extends React.Component {
   render() {
     const { ingredient1, ingredient2, ingredient3 } = this.state;
     return (
-      <div className="App">
+      <div className='App'>
         <Apps>
-          <Victory end={this.state.endGame}> <div><img src={this.state.victory ? victoire : defeat} alt="victoire" /></div></Victory>
+          <Victory end={this.state.endGame}>
+            <div>
+              <img
+                src={this.state.victory ? victoire : defeat}
+                alt='victoire'
+              />
+            </div>
+            <BUBU onClick={() => window.location.reload(false)}>Rejouer</BUBU>
+          </Victory>
           <Header>
-          <Banner />
-            <Audio/>
+            <Banner />
+            <Audio />
           </Header>
           <Block>
-            <Instructions className="instructions">
+            <Instructions className='instructions'>
               <Title>Instructions</Title>
               <p>
                 Oyé Oyé voyageur ! Es-tu prêt à relever le défi ? Les règles
@@ -387,7 +417,7 @@ class App extends React.Component {
             </Instructions>
             <GameBoard>
               <TavernKeeper />
-              <StuffTavernKeeper className="tavernier">
+              <StuffTavernKeeper className='tavernier'>
                 <Title>Stuff tavern keeper</Title>
                 <IngredientTavern>
                   <div>
@@ -398,7 +428,7 @@ class App extends React.Component {
                           tavernButton: 1,
                         })
                       }
-                      type="button"
+                      type='button'
                     >
                       <InventoryTavern
                         image={ingredient1.img}
@@ -413,7 +443,7 @@ class App extends React.Component {
                           tavernButton: 2,
                         })
                       }
-                      type="button"
+                      type='button'
                     >
                       <InventoryTavern
                         image={ingredient2.img}
@@ -427,7 +457,7 @@ class App extends React.Component {
                           tavernButton: 3,
                         })
                       }
-                      type="button"
+                      type='button'
                     >
                       <InventoryTavern
                         image={ingredient3.img}
@@ -437,28 +467,28 @@ class App extends React.Component {
                   </div>
                   <Reroll>
                     <p>Reroll Restant {this.state.counterlife} </p>
-                  <button
-                    className="ButtonChangeDraft"
-                    onClick={() =>
-                      this.setState({
-                        ingredient1: this.newImage(),
-                        ingredient2: this.newImage(),
-                        ingredient3: this.newImage(),
-                        counterlife: this.state.counterlife -1,
-                      })
-                    }
-                  ></button>
+                    <button
+                      className='ButtonChangeDraft'
+                      onClick={() =>
+                        this.setState({
+                          ingredient1: this.newImage(),
+                          ingredient2: this.newImage(),
+                          ingredient3: this.newImage(),
+                          counterlife: this.state.counterlife - 1,
+                        })
+                      }
+                    ></button>
                   </Reroll>
                 </IngredientTavern>
               </StuffTavernKeeper>
-              <PlayerStuff className="player">
+              <PlayerStuff className='player'>
                 <Title>Your Stuff</Title>
                 <IngredientBackpack>
                   <button
-                    type="button"
+                    type='button'
                     onClick={() =>
                       this.setState({
-                        mySelfValue: this.state.myStuff2,
+                        mySelfValue: this.state.myStuff1,
                         mySelfButton: 1,
                       })
                     }
@@ -470,7 +500,7 @@ class App extends React.Component {
                   </button>
 
                   <button
-                    type="button"
+                    type='button'
                     onClick={() =>
                       this.setState({
                         mySelfValue: this.state.myStuff2,
@@ -484,7 +514,7 @@ class App extends React.Component {
                     />
                   </button>
                   <button
-                    type="button"
+                    type='button'
                     onClick={() =>
                       this.setState({
                         mySelfValue: this.state.myStuff3,
@@ -501,7 +531,6 @@ class App extends React.Component {
               </PlayerStuff>
             </GameBoard>
             <Recipe>
-              <Title>Recipe of the Day</Title>
               <Recipes menu={this.state.menu} />
             </Recipe>
           </Block>
