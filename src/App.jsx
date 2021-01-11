@@ -47,7 +47,8 @@ const Apps = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: 100vh;
+  min-height:100vh;
+  height: 100%;
   font-family: cursive;
 
   .ButtonChangeDraft {
@@ -72,24 +73,25 @@ const Apps = styled.div`
 const Block = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 80px;
+  margin-top: 70px;
   padding-top: 0;
 `;
 
 const Header = styled.div`
   display: flex;
+  justify-content:center;
 `;
 
 const Banner = styled.div`
   background-image: url(${bannerImg});
   background-size: contain;
   background-repeat: no-repeat;
-  width: 465px;
-  height: 152px;
+  width: 370px;
+  height: 100px;
   margin: auto;
   position: absolute;
-  left: 0;
-  right: 0;
+  left: auto;
+  right: auto;
 `;
 
 const GameBoard = styled.div`
@@ -102,7 +104,7 @@ const TavernKeeper = styled.div`
   background-repeat: no-repeat;
   margin: auto;
   width: 327px;
-  height: 411px;
+  height: 350px;
 `;
 
 const StuffTavernKeeper = styled.div`
@@ -130,7 +132,7 @@ const Instructions = styled.div`
 
 const PlayerStuff = styled.div`
   width: 700px;
-  margin: 30px auto 0 auto;
+  margin: 10px auto 0 auto;
   background-color: rgba(196, 196, 196, 0.7);
   border-radius: 5px;
 `;
@@ -146,6 +148,7 @@ const Title = styled.h1`
 
 const Victory = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
+  background-size: 50%;
   position: absolute;
   z-index: 10;
   display: ${({ end }) => (end ? 'flex' : 'none')};
@@ -158,14 +161,14 @@ const Victory = styled.div`
 `;
 
 const Intro = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 `;
 
 const BUBU = styled.button`
   position: absolute;
   left: auto;
   right: auto;
-  bottom: 80px;
+  bottom: 30px;
   padding: 5px;
   font-size: 28px;
   font-weight: 900;
@@ -376,7 +379,6 @@ class App extends React.Component {
   render() {
     const { ingredient1, ingredient2, ingredient3 } = this.state;
     return (
-      <div className='App'>
         <Apps>
           <Victory end={this.state.endGame}>
             <div>
@@ -523,7 +525,7 @@ class App extends React.Component {
             <Recipes menu={this.state.menu} />
           </Block>
         </Apps>
-      </div>
+      
     );
   }
 }
