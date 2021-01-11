@@ -3,6 +3,8 @@ import Music from './audio/medieval-music-wild-boars-inn.mp3';
 import styled from "styled-components";
 
 const Player= styled.div`
+position: absolute;
+left:5px;
   button {
     padding: 5px 10px;
     background-color: rgba(

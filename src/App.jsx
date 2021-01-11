@@ -1,18 +1,44 @@
-import React from "react";
-import "./App.css";
-import InventoryTavern from "./components/InventoryTavern";
-import InventoryMySelf from "./components/InventoryMySelf";
-import ingredientsList from "./components/ingredientsList";
-import Recipes from "./components/Recipes";
-import recipesList from "./components/recipesList";
-import Backgroundimg from "./images/background.svg";
-import styled from "styled-components";
-import bannerImg from "./images/Banner.svg";
-import tavernierImg from "./images/tavernier.svg";
-import Audio from './components/Audio'
+import React from 'react';
+import './App.css';
+import InventoryTavern from './components/InventoryTavern';
+import InventoryMySelf from './components/InventoryMySelf';
+import ingredientsList from './components/ingredientsList';
+import Recipes from './components/Recipes';
+import recipesList from './components/recipesList';
+import Backgroundimg from './images/background.svg';
+import ButtonImg from './images/button2.png';
+import styled from 'styled-components';
+import bannerImg from './images/Banner.svg';
+import tavernierImg from './images/tavernier.svg';
+import victoire from './images/Victory.png';
+import defeat from './images/defeat2.png';
+import Audio from './components/Audio';
+import bg_paneau from './images/boutton.png';
 
-const IngredientTavern = styled.div``;
-const IngredientBackpack = styled.div``;
+const Reroll = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+`;
+
+const IngredientTavern = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+`;
+
+const IngredientBackpack = styled.div`
+  padding: 5px;
+  margin: 5px;
+`;
 
 const Apps = styled.div`
   margin: 0;
@@ -20,37 +46,52 @@ const Apps = styled.div`
   background-image: url(${Backgroundimg});
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height:100vh;
+  height: 100%;
   font-family: cursive;
 
   .ButtonChangeDraft {
-    padding: 10px;
-    background: red;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    color: #fff;
+    width: 60px;
+    height: 60px;
+    background-image: url(${ButtonImg});
+    background-position: center;
+    background-size: cover;
+    margin-top: 5%;
+  }
+
+  .player,
+  .tavernier {
+    text-align: center;
+    height: auto;
+    width: 100%;
+    padding: 5px;
   }
 `;
 
 const Block = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 70px;
+  padding-top: 0;
 `;
 
 const Header = styled.div`
   display: flex;
-
+  justify-content:center;
 `;
 
 const Banner = styled.div`
   background-image: url(${bannerImg});
   background-size: contain;
   background-repeat: no-repeat;
-  width: 465px;
-  height: 152px;
+  width: 370px;
+  height: 100px;
   margin: auto;
+  position: absolute;
+  left: auto;
+  right: auto;
 `;
 
 const GameBoard = styled.div`
@@ -63,64 +104,81 @@ const TavernKeeper = styled.div`
   background-repeat: no-repeat;
   margin: auto;
   width: 327px;
-  height: 411px;
+  height: 350px;
 `;
 
 const StuffTavernKeeper = styled.div`
-  height: 150px;
-  background-color: rgba(196, 196, 196, 0.5);
+  background-color: rgba(196, 196, 196, 0.7);
   border-radius: 5px;
 `;
 
 const Instructions = styled.div`
-  flex: 0 0 20%;
-  max-width: 20%;
-  margin: 10px 0 0 100px;
-  background-color: rgba(196, 196, 196, 0.5);
+  flex: 0 0 25%;
+  height: fit-content;
+  margin: 10px 0 0 50px;
+  background-color: rgba(196, 196, 196, 0.7);
   border-radius: 5px;
 
   p {
-    font-size: 25px;
     text-align: center;
     line-height: 1.5;
     padding: 0 25px;
   }
-`;
 
-const Recipe = styled.div`
-  margin: 10px 100px 0 0;
-  flex: 0 0 20%;
-  max-width: 20%;
-  height: 500px;
-  background-color: rgba(196, 196, 196, 0.5);
-  border-radius: 5px;
-  p {
-    font-size: 25px;
-    text-align: center;
-    line-height: 1.5;
-    padding: 0 25px;
+  @media screen and (max-width: 500px) {
+    display: none;
   }
 `;
 
 const PlayerStuff = styled.div`
-  height: 150px;
   width: 700px;
-  margin: 30px auto 0 auto;
-  background-color: rgba(196, 196, 196, 0.5);
+  margin: 10px auto 0 auto;
+  background-color: rgba(196, 196, 196, 0.7);
   border-radius: 5px;
 `;
 
 const Title = styled.h1`
   text-align: center;
-  font-size: 36px;
-  padding-top: 10px;
+  font-size: 29px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
   margin-top: 0px;
 `;
 
 const Victory = styled.div`
+  background-color: rgba(0, 0, 0, 0.7);
+  background-size: 50%;
   position: absolute;
-  top: 40%;
-  left: 50%;
+  z-index: 10;
+  display: ${({ end }) => (end ? 'flex' : 'none')};
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  opacity: ${({ end }) => (end ? 1 : 0)};
+`;
+
+const Intro = styled.p`
+  font-size: 1.3rem;
+`;
+
+const BUBU = styled.button`
+  position: absolute;
+  left: auto;
+  right: auto;
+  bottom: 30px;
+  padding: 5px;
+  font-size: 28px;
+  font-weight: 900;
+  text-shadow: 1px 1px 0 #423b35;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  outline-style: none;
+  background-image: url(${bg_paneau});
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 const Button = styled.button``;
@@ -135,24 +193,24 @@ class App extends React.Component {
       ingredient3: [],
       myStuff1: {
         id: 12,
-        img: "./images/Patate.png",
-        name: "Patate",
+        img: './images/Patate.png',
+        name: 'Patate',
         rating: 88,
-        rarity: "commun",
+        rarity: 'commun',
       },
       myStuff2: {
         id: 12,
-        img: "./images/Patate.png",
-        name: "Patate",
+        img: './images/Patate.png',
+        name: 'Patate',
         rating: 88,
-        rarity: "commun",
+        rarity: 'commun',
       },
       myStuff3: {
         id: 12,
-        img: "./images/Patate.png",
-        name: "Patate",
+        img: './images/Patate.png',
+        name: 'Patate',
         rating: 88,
-        rarity: "commun",
+        rarity: 'commun',
       },
       counterlife: 10,
       clickTavern: false,
@@ -161,6 +219,8 @@ class App extends React.Component {
       mySelfValue: null,
       tavernButton: null,
       mySelfButton: null,
+      endGame: false,
+      victory: false,
     };
   }
   componentDidMount() {
@@ -250,15 +310,58 @@ class App extends React.Component {
         }
       }
     }
+
+    if (
+      (this.state.myStuff1.name === this.state.menu.ingredient1 ||
+        this.state.myStuff1.name === this.state.menu.ingredient2 ||
+        this.state.myStuff1.name === this.state.menu.ingredient3) &&
+      (this.state.myStuff2.name === this.state.menu.ingredient1 ||
+        this.state.myStuff2.name === this.state.menu.ingredient2 ||
+        this.state.myStuff2.name === this.state.menu.ingredient3) &&
+      (this.state.myStuff3.name === this.state.menu.ingredient1 ||
+        this.state.myStuff3.name === this.state.menu.ingredient2 ||
+        this.state.myStuff3.name === this.state.menu.ingredient3)
+    ) {
+      this.setState({
+        victory: true,
+        endGame: true,
+        myStuff1: {
+          id: 12,
+          img: './images/Patate.png',
+          name: 'Patate',
+          rating: 88,
+          rarity: 'commun',
+        },
+        myStuff2: {
+          id: 12,
+          img: './images/Patate.png',
+          name: 'Patate',
+          rating: 88,
+          rarity: 'commun',
+        },
+        myStuff3: {
+          id: 12,
+          img: './images/Patate.png',
+          name: 'Patate',
+          rating: 88,
+          rarity: 'commun',
+        },
+      });
+    } else if (this.state.counterlife === -1) {
+      this.setState({
+        endGame: true,
+        counterlife: 0,
+      });
+    }
   }
   randomRarityCalc() {
     const random = Math.floor(Math.random() * 100) + 1;
-    let rarity = "commun";
+    let rarity = 'commun';
 
     if (random < 20) {
-      rarity = "rare";
+      rarity = 'rare';
     } else if (random < 50) {
-      rarity = "uncommun";
+      rarity = 'uncommun';
     }
     return rarity;
   }
@@ -276,16 +379,24 @@ class App extends React.Component {
   render() {
     const { ingredient1, ingredient2, ingredient3 } = this.state;
     return (
-      <div className="App">
         <Apps>
+          <Victory end={this.state.endGame}>
+            <div>
+              <img
+                src={this.state.victory ? victoire : defeat}
+                alt='victoire'
+              />
+            </div>
+            <BUBU onClick={() => window.location.reload(false)}>Rejouer</BUBU>
+          </Victory>
           <Header>
             <Banner />
-            <Audio/>
+            <Audio />
           </Header>
           <Block>
-            <Instructions>
+            <Instructions className='instructions'>
               <Title>Instructions</Title>
-              <p>
+              <Intro>
                 Oyé Oyé voyageur ! Es-tu prêt à relever le défi ? Les règles
                 sont simples … Ton but est de réaliser la recette du jour en
                 récupérant tous ses ingrédients. Pour ce faire, il va falloir
@@ -294,77 +405,82 @@ class App extends React.Component {
                 ingrédients contre un des siens . Mais attention chaque
                 ingrédient a une valeur et une rareté, le tavernier ne se
                 laissera pas avoir...
-              </p>
+              </Intro>
             </Instructions>
             <GameBoard>
               <TavernKeeper />
-              <StuffTavernKeeper>
+              <StuffTavernKeeper className='tavernier'>
                 <Title>Stuff tavern keeper</Title>
                 <IngredientTavern>
-                  <Button
-                    onClick={() =>
-                      this.setState({
-                        tavernValue: this.state.ingredient1,
-                        tavernButton: 1,
-                      })
-                    }
-                    type="button"
-                  >
-                    <InventoryTavern
-                      image={ingredient1.img}
-                      name={ingredient1.name}
-                    />
-                  </Button>
-                  <Button
-                    onClick={() =>
-                      this.setState({
-                        tavernValue: this.state.ingredient2,
-                        tavernButton: 2,
-                      })
-                    }
-                    type="button"
-                  >
-                    <InventoryTavern
-                      image={ingredient2.img}
-                      name={ingredient2.name}
-                    />
-                  </Button>
-                  <Button
-                    onClick={() =>
-                      this.setState({
-                        tavernValue: this.state.ingredient3,
-                        tavernButton: 3,
-                      })
-                    }
-                    type="button"
-                  >
-                    <InventoryTavern
-                      image={ingredient3.img}
-                      name={ingredient3.name}
-                    />
-                  </Button>
+                  <div>
+                    <Button
+                      onClick={() =>
+                        this.setState({
+                          tavernValue: this.state.ingredient1,
+                          tavernButton: 1,
+                        })
+                      }
+                      type='button'
+                    >
+                      <InventoryTavern
+                        image={ingredient1.img}
+                        name={ingredient1.name}
+                      />
+                    </Button>
+
+                    <Button
+                      onClick={() =>
+                        this.setState({
+                          tavernValue: this.state.ingredient2,
+                          tavernButton: 2,
+                        })
+                      }
+                      type='button'
+                    >
+                      <InventoryTavern
+                        image={ingredient2.img}
+                        name={ingredient2.name}
+                      />
+                    </Button>
+                    <Button
+                      onClick={() =>
+                        this.setState({
+                          tavernValue: this.state.ingredient3,
+                          tavernButton: 3,
+                        })
+                      }
+                      type='button'
+                    >
+                      <InventoryTavern
+                        image={ingredient3.img}
+                        name={ingredient3.name}
+                      />
+                    </Button>
+                  </div>
+                  <Reroll>
+                    <p>Reroll Restant {this.state.counterlife} </p>
+                    <button
+                      className='ButtonChangeDraft'
+                      onClick={() =>
+                        this.setState({
+                          ingredient1: this.newImage(),
+                          ingredient2: this.newImage(),
+                          ingredient3: this.newImage(),
+                          counterlife: this.state.counterlife - 1,
+                        })
+                      }
+                    ></button>
+                  </Reroll>
                 </IngredientTavern>
-                <button
-                  className="ButtonChangeDraft"
-                  onClick={() =>
-                    this.setState({
-                      ingredient1: this.newImage(),
-                      ingredient2: this.newImage(),
-                      ingredient3: this.newImage(),
-                    })
-                  }
-                >
-                  change the draft
-                </button>
               </StuffTavernKeeper>
-              <PlayerStuff>
+              <PlayerStuff className='player'>
                 <Title>Your Stuff</Title>
                 <IngredientBackpack>
                   <button
-                    type="button"
+                    type='button'
                     onClick={() =>
                       this.setState({
-                        mySelfValue: this.state.myStuff2,
+                        mySelfValue: this.state.myStuff1,
                         mySelfButton: 1,
                       })
                     }
@@ -376,7 +492,7 @@ class App extends React.Component {
                   </button>
 
                   <button
-                    type="button"
+                    type='button'
                     onClick={() =>
                       this.setState({
                         mySelfValue: this.state.myStuff2,
@@ -390,7 +506,7 @@ class App extends React.Component {
                     />
                   </button>
                   <button
-                    type="button"
+                    type='button'
                     onClick={() =>
                       this.setState({
                         mySelfValue: this.state.myStuff3,
@@ -406,13 +522,10 @@ class App extends React.Component {
                 </IngredientBackpack>
               </PlayerStuff>
             </GameBoard>
-            <Recipe>
-              <Title>Recipe of the Day</Title>
-              <Recipes menu={this.state.menu} />
-            </Recipe>
+            <Recipes menu={this.state.menu} />
           </Block>
         </Apps>
-      </div>
+      
     );
   }
 }
